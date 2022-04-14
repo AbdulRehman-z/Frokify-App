@@ -108,7 +108,7 @@ const addRecipeControler = async function (newRecipe) {
     addRecipeView.renderErrMsg(err);
   }
 };
-
+console.log('khan');
 const init = function () {
   bookmarkView.localStgBookMrkHandler(localStgBookMrkRender);
   recipeView.addHandlerRender(recipeController);
