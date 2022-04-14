@@ -11,10 +11,12 @@ import bookmarkView from './view/bookmarkView.js';
 const recipeController = async function () {
   try {
     const id = window.location.hash.slice(1);
+    if (!id) return;
+
     recipeView.renderSpinner();
     // 0) update only the elements that have changes NoOTthe whole container
     resultView.updated(modal.getSearchResultsPage());
-    // debugger;
+
     bookmarkView.updated(modal.state.bookmarks);
     // 1) fetching data about recipe
 
@@ -23,9 +25,7 @@ const recipeController = async function () {
 
     recipeView.render(modal.state.recipe);
   } catch (err) {
-    alert(err);
     recipeView.renderErrMsg();
-    console.error(err);
   }
 };
 
@@ -119,7 +119,3 @@ const init = function () {
   addRecipeView.addNewRecipeHandler(addRecipeControler);
 };
 init();
-///////////////////////////////////////
-// if (module.hot) {
-//   module.hot.accept();
-// }
